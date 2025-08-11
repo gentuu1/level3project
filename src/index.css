@@ -1,0 +1,476 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  background-color: #181818;
+  width: 30%;
+  margin:50px auto;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+}
+
+.container h1 {
+  margin-bottom: 0.3rem;
+  font-size: 2rem;
+}
+
+.container p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.container a {
+  color: #00b7ff;
+  text-decoration: none;
+}
+
+.inputcontainerLog {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2rem;
+}
+
+.inputcontainerLog input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.inputcontainerLog input::placeholder {
+  color: #aaa;
+}
+
+.inputcontainerLog button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00b7ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.inputcontainerLog button:hover {
+  background-color: #009ddc;
+}
+
+.hrContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #aaa;
+  margin: 1.5rem 0;
+}
+
+.hrContainer hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #555;
+}
+
+.iconLog {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.iconLog a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.iconLog a:hover {
+  color: #00b7ff;
+}
+
+
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #FFFDF3;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #000E42;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.sidebar-div{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  gap: 10px;
+}
+
+.sidebar-div > h1{
+  font-size: 18px;
+  font-weight: 800;
+  color: #FFFDF3;
+
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  margin: 15px 0;
+  display: block;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  transition:0.2s ease-in-out;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #18245D;
+}
+
+.logout {
+  margin-top: 10rem;
+  background-color: #ff4d4f;
+  text-align: center;
+  color: white;
+}
+.logout:hover {
+  background-color: #d9363e;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 30px;
+  overflow-y: auto;
+  /* width: 40%; */
+  /* border: 1px solid ; */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 8px 15px;
+  width: 90%;
+  margin: auto;
+  background-color: white;
+}
+
+.search-container input {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  width: 100%;
+  font-size: 14px;
+  background: transparent;
+
+}
+
+.search-container i {
+  color: #888;
+  font-size: 16px;
+    transition: 0.5s;
+}
+
+.search-container i:active{
+  transform: scale(1.3);
+}
+
+
+.welcome-header .messageh2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.welcome-header p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.account-overview{
+margin: 2rem 0;
+}
+
+.account-view{
+  background-color: #000E42;
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.account-overview .balance{
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0;
+}
+
+.actions-container{
+  display: flex;
+  width: 100%;
+  /* background-color: #000E42; */
+  padding: 1rem 0;
+  gap: 2rem;
+  line-height: 0px;
+}
+
+.link {
+  background-color: #000E42; 
+  color: white;
+  text-decoration: none;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  transition: 0.3s ease;
+  font-size: 10px;
+}
+
+.link:focus, .link:focus {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  background-color: #1a1e5f;
+}
+
+.link i {
+  font-size: 1.3rem;
+  color: #FFFDF3;
+}
+.home-container{
+  padding: 0 2rem;
+}
+
+.transfer-box, .depositContainer {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  /* border: 1px solid #000e42; */
+  box-shadow: 0px 0px 2px ;
+  text-align: center;
+}
+
+.transfer-box h3, .depositContainer h1 {
+  color: #000e42;
+  margin-bottom: 20px;
+}
+
+.transfer-box input, .depositContainer input {
+  width: 95%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.transfer-box input:focus, .depositContainer input:focus {
+  border: 1px solid #000e42;
+  outline: none;
+}
+
+.account-name {
+  display: block;
+  text-align: left;
+  color: #666;
+  font-size: 14px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+.transfer-box button, .depositContainer button {
+  width: 105%;
+  padding: 15px;
+  background-color: #000e42;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.transfer-box button:hover, .depositContainer button:hover {
+  background-color: #1a237e;
+  cursor: pointer;
+}
+
+
+.profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
+}
+
+.transactionContainer {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9fafc; 
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  max-height: 15rem ;
+  overflow-y: scroll;
+}
+ .transactionContainer_all{
+   margin-top: 20px;
+  padding: 15px;
+  background-color: #f9fafc; 
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+  max-height: 100dvh;
+  overflow-y: scroll;
+ }
+
+.transactionContainer h1,  .transactionContainer_all h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  display: inline;
+  margin-right: 6rem;
+  margin-left: 10px;
+
+}
+
+.transactionContainer .Llink {
+  text-decoration: none;
+  color: #0284C7;
+  margin-left: 6rem;
+  text-transform: capitalize;
+}
+
+.transactionContainer .Llink:hover {
+  text-decoration: underline;
+  color: #2563EB;
+}
+
+.transactionContainer div ,  .transactionContainer_all div{
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  margin-top: 10px;
+  
+}
+
+.transactionContainer div p,  .transactionContainer_all div p {
+  margin: 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.transactionContainer div:hover {
+  background-color: #eef3ff; 
+  cursor: pointer;
+}
+
+
+.updatePassContainer{
+  background-color: #181818;
+  width: 30%;
+  margin:50px auto;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  color: white;
+  /* text-align: center; */
+}
+
+.updatePassContainer .headerText {
+  color: white;
+  text-align: center;
+  line-height: 10px;
+  margin-bottom: 2rem;
+}
+
+.updatePassContainer .headerText h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.updatePassContainer .headerText p {
+  font-size: 0.95rem;
+  display: inline;
+}
+
+.updatePassContainer .headerText a {
+  color: #00b7ff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: inline;
+
+}
+
+.updatePassContainer .headerText a:hover {
+  color: #009ddc;
+}
+
+
+.updatePassContainer :last-child{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 2rem;
+}
+
+.updatePassContainer :last-child input{
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.updatePassContainer :last-child input::placeholder {
+  color: #aaa;
+}
+
+.updatePassContainer :last-child button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00b7ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.updatePassContainer :last-child button:hover {
+  background-color: #009ddc;
+}
+
+
+
+
+
+
+
+

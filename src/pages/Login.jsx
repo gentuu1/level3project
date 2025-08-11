@@ -1,0 +1,106 @@
+import React, { useState } from "react";
+import Logo from "../components/Logo";
+import LogoNav from "../components/LogoNav";
+import { Formik, useFormik } from "formik";
+import axios from "axios";
+import * as yup from 'yup'
+import { Navigate, useNavigate } from "react-router-dom";
+import usestate from "usestate";
+const Login = () => {
+  const [loginin, setloginin] = useState(false)
+  let navigate = useNavigate()
+
+  let formik = useFormik({
+    initialValues:{
+      email:'',
+      password:''
+    },
+     onSubmit:async(values)=>{
+      console.log(values);
+      setloginin(true)
+       let response = await axios.post('http://localhost:3000/user/login', values)
+       if(response.data.status == false){
+         navigate('/login')
+         alert(`${response.data.message}`)
+       }
+       else{
+         const userData = {
+           message: response.data.message,
+           accountNumber : response.data.accountNumber,
+           balance : response.data.balance,
+           historys: response.data.history
+          }
+          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('userData', JSON.stringify(userData))
+          navigate('/dashboard', { state: userData });
+          alert(`logged in successful`)
+       }
+       setloginin(false)
+     },
+
+    validationSchema: yup.object({
+            email: yup.string()
+              .required('Email is required')
+              .email('please enter a valid email'),
+            password: yup
+              .string()
+              .required("Password is required")
+              .min(8, "Password must be at least 8 characters")
+              .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
+              .matches(/[a-z]/, "Password must contain at least one lowercase letter")
+              .matches(/[@$!%*?&]/, "Password must contain at least one special character"),
+      
+    })
+  })
+
+
+  return (
+    <div style={{backgroundColor:'#FFFDF3', height:'110dvh'}} >
+       <LogoNav/>
+       <div className="container">
+          <div  style={{color:'white', textAlign:'center', lineHeight:'10px'}}>
+             <h1>Welcome Back</h1>
+          <p>Don't have an account yet? <a href="/Register">SignUp</a></p>
+          </div>
+
+          <div className="inputcontainerLog">
+
+            <input type="text" name="email"  placeholder=" email address" onChange={formik.handleChange}/>
+              {
+                formik.errors.email ? (
+                  <small style={{color:'red'}}>{formik.errors.email}</small>
+                ):''
+              }
+
+            <input type="password" name="password" placeholder="password" onChange={formik.handleChange}/>
+               {
+                formik.errors.password ? (
+                  <small style={{color:'red'}}>{formik.errors.password}</small>
+                ):''
+              }
+
+            <button type="submit" onClick={formik.handleSubmit} disabled={loginin}>
+              {
+                loginin? 'Logging in...' : 'Login'
+              }
+              </button>
+            <a href="/forgetpassword">forget password?</a>
+          </div>
+
+            <div  className="hrContainer">
+              <hr />
+              <h6>OR</h6>
+              <hr />
+            </div>
+
+            <div className="iconLog">
+             <a href=""> <i className="fa-brands fa-apple"></i></a>
+             <a href=""> <i className="fa-brands fa-google"></i></a>
+             <a href=""> <i className="fa-brands fa-x-twitter"></i></a>
+            </div>
+       </div>
+    </div>
+  );
+};
+
+export default Login;

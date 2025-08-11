@@ -1,0 +1,56 @@
+import React from 'react'
+import image from '../assets/image.png'
+import Logo from '../components/Logo'
+import { Navigate, NavLink, Outlet, useNavigate } from 'react-router-dom'
+// import Transactions from './Transactions'
+import BankLogo from '../assets/bankLogo.jpg'
+
+const Dashboard = () => {
+ let navigate = useNavigate()
+    const logout =()=>{
+        // let verifytoken =localStorage.getItem('token')
+        let confirm = window.confirm('Are you sure you want to logout?')
+        if(!confirm){
+            navigate('/Dashboard/home')
+        }else{
+            alert('user logged out')
+            localStorage.removeItem('token')
+            localStorage.removeItem('userData')
+            navigate('/')
+        }   
+    }
+
+    return (
+        <div className='dashboard-layout'>
+            <aside className='sidebar' style={{ width: '20%' }}>
+                <div className='sidebar-div'>
+                    <img src={image} alt="" height={70} />
+                    <h1>SQI TRUSTBANK</h1>
+                </div>
+
+
+                <nav>
+                    <NavLink to={'/Dashboard/'} className={'nav-item'}>Home</NavLink>
+                    <NavLink to={'/Dashboard/profile'} className={'nav-item'}>Profile</NavLink>
+                    <NavLink to={'/Dashboard/settings'} className={'nav-item'}>Settings</NavLink>
+                    <NavLink to={'/Dashboard/transfer'} className={'nav-item'}>Transfer</NavLink>
+                    <NavLink  to={'/'} className="nav-item logout" onClick={()=>logout()}>Logout</NavLink>
+                </nav>
+            </aside>
+
+            <div className='main-content'>
+                <Outlet />
+            </div>
+
+            <div
+                style={{
+                    width: '25%',
+                    overflow:'hidden'
+                }}
+            ><img src={BankLogo} height={600} alt="" style={{width:'100%'}}/></div>
+
+        </div>
+    )
+}
+
+export default Dashboard
