@@ -6,12 +6,10 @@ import * as yup from 'yup'
 
 const Deposit = () => {
     let navigate = useNavigate()
-    const location = useLocation()
-    const stateData = location.state
-    const token = localStorage.getItem('token')
-    let localData = localStorage.getItem('userData')
-    const parsedData = localData ? JSON.parse(localData) : {}
-    let data = token? parsedData || stateData : ''
+    let token = localStorage.getItem('token')
+    let localAcountnum = localStorage.getItem('userData')
+    let parsedData = JSON.parse(localAcountnum)
+    let data = parsedData ? parsedData : {}
 
     const { accountNumber } = data
 
@@ -22,18 +20,28 @@ const Deposit = () => {
             amount: ''
         },
         onSubmit: async (values) => {
-            console.log(values);
-            let res = await axios.post('http://localhost:3000/user/deposit', values)
-            console.log(res.data);
-            
+            let res = await axios.post('http://localhost:3000/user/deposit', values,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+
+            if (res.data.message === 'session expired') {
+                alert('session expired')
+                navigate('/')
+                return
+            }
+
             if (res.data.status == false) {
                 alert(res.data.message)
-                return navigate('/')
+                return navigate('/dashboard/deposit')
+                
             }
-            const updateData = {...parsedData, balance:res.data.newBalance, historys:res.data.newhistory}
-            localStorage.setItem('userData', JSON.stringify(updateData))
             alert(res.data.message)
-            navigate('/dashboard/', {state:updateData})
+            navigate('/dashboard/')
         }
 
     })

@@ -149,6 +149,11 @@ body {
   background-color: #ff4d4f;
   text-align: center;
   color: white;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 15px  30px;
+  font-size: 16px;
 }
 .logout:hover {
   background-color: #d9363e;
@@ -318,15 +323,6 @@ margin: 2rem 0;
 }
 
 
-.profile-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #fefefe;
-  border-radius: 12px;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
-}
-
 .transactionContainer {
   margin-top: 20px;
   padding: 15px;
@@ -432,14 +428,14 @@ margin: 2rem 0;
 }
 
 
-.updatePassContainer :last-child{
+.updatePassContainer :last-child, .requestCon{
   display: flex;
   flex-direction: column;
   gap: 15px;
   margin-bottom: 2rem;
 }
 
-.updatePassContainer :last-child input{
+.updatePassContainer :last-child input,  .request_input{
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -448,11 +444,11 @@ margin: 2rem 0;
   font-size: 0.95rem;
 }
 
-.updatePassContainer :last-child input::placeholder {
+.updatePassContainer :last-child input::placeholder, .request_input::placeholder {
   color: #aaa;
 }
 
-.updatePassContainer :last-child button {
+.updatePassContainer :last-child button, .requestOtp_but {
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -463,14 +459,194 @@ margin: 2rem 0;
   transition: 0.3s;
 }
 
-.updatePassContainer :last-child button:hover {
+.updatePassContainer :last-child button:hover , .requestOtp_but:hover{
   background-color: #009ddc;
 }
 
+.profile-container, .requestOtp , .changePass{
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
+}
 
+.profile-container h1, .requestOtp h1, .changePass h1{
+ text-align: center;
+ text-transform: capitalize;
+ font-size: 2.5rem;
+ margin: 20px auto;
+}
 
+.accountDetails_container, .accountSummary_container, .accountSecurity_container{
+  padding: 30px;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: -4px 0px 0px 0px #000E42 ;
+  background-color: #f8f9fa;
+}
 
+.accountDetails_container p,
+ .accountSummary_container p,
+  .accountSecurity_container p{
+  font-size: 22px;
+  margin: 5px auto;
+  font-weight: bolder;
+  color:  #000E42;
+  text-transform: capitalize;
+}
 
+.accountDetails_container p small,
+.accountSecurity_container p small,
+.accountSummary_container p small{
+  color: black;
+  margin-left: 5px;
+  text-transform: none;
+  font-size: 15px;
+}
+ .accountSummary_container h2, .accountSecurity_container h2{
+  font-size: 1.9rem;
+  margin-bottom:1rem;
+  margin-top: 0px;
+  color: #000E42;
+  text-transform: capitalize;
+ }
+.change_password{
+  padding: 10px 20px;
+  background-color: #000E42;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  margin: 20px auto;
+  font-size: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.change_password:focus{
+  transform: scale(1.1);
+  background-color: #18245D;
+}
+
+.delete_account{
+  display: block;
+  margin: 30px auto 0;
+  padding: 12px 30px;
+  background-color: #e63946;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.delete_account:hover {
+  /* background-color: #d62828; */
+  transform: translateY(2px);
+}
+
+.delete_account:focus {
+  background-color: #d62828;
+  transform: scale(1.1);
+}
+
+.requestInputCon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.requestInputCon input {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.requestInputCon input:focus {
+  border-color: #000E42;
+}
+
+.requestInputCon button {
+  padding: 10px 20px;
+  background-color: #000E42;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.requestInputCon button:hover {
+  background-color: #1a237e;
+}
+
+.changepassword_Container {
+  width: 85%;
+  max-width: 400px;
+  margin: 30px auto;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.changepassword_Container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.changepassword_Container input:focus {
+  border-color: #000E42;
+}
+
+.changepassword_Container button {
+  padding: 10px;
+  background-color: #000E42;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.changepassword_Container button:hover {
+  background-color: #1a237e;
+}
+
+.settings-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+}
+
+.settings-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.setting-item {
+  margin: 20px auto;
+}
 
 
 

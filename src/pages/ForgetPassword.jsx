@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LogoNav from '../components/LogoNav'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { Formik, useFormik } from 'formik'
@@ -7,21 +7,31 @@ import * as yup from 'yup'
 
 const ForgetPassword = () => {
     let navigate = useNavigate()
+    const [isUpdating, setisUpdating] = useState(false)
 
     let formik = useFormik({
         initialValues: {
             email: '',
-            newPassword:''
+            newPassword:'',
+            otp:''
         },
         onSubmit: async (values) => {
+            try {
+                setisUpdating(true)
             let response = await axios.post('http://localhost:3000/user/forgetpassword', values)
             if (response.data.status == false) {
                 navigate('/forgetpassword')
                 alert(`${response.data.message}`)
+                setisUpdating(false)
             } else {
-                navigate('/login')
                 alert(`${response.data.message}`)
+                navigate('/login')
             }
+            } catch (error) {
+                console.log(error);
+                
+            }
+            setisUpdating(false)
         },
         validationSchema: yup.object({
             email: yup.string()
@@ -34,6 +44,7 @@ const ForgetPassword = () => {
                 .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
                 .matches(/[a-z]/, "Password must contain at least one lowercase letter")
                 .matches(/[@$!%*?&]/, "Password must contain at least one special character"),
+            otp:yup.string().required('confirmation code is required')
         })
 
     })
@@ -56,13 +67,26 @@ const ForgetPassword = () => {
                         ):''
                     }
 
+                    <input type="text" name='otp' placeholder='confirmation code' onChange={formik.handleChange}/>
+                    <small style={{color:'red'}}>
+                        {
+                            formik.errors.otp? formik.errors.otp :''
+                        }
+                    </small>
+
                     <input type="password" name="newPassword" placeholder='new password' onChange={formik.handleChange} />
                      {
                         formik.errors.newPassword ? (
                             <small style={{color:'red'}}>{formik.errors.newPassword}</small>
                         ):''
                     }
-                    <button type="submit" onClick={formik.handleSubmit}>Update password</button>
+
+
+                    <button type="submit" onClick={formik.handleSubmit}>
+                        {
+                            isUpdating? 'Updating' :'Update Password'
+                        }
+                    </button>
                 </div>
             </div>
         </div>

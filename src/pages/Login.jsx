@@ -16,7 +16,6 @@ const Login = () => {
       password:''
     },
      onSubmit:async(values)=>{
-      console.log(values);
       setloginin(true)
        let response = await axios.post('http://localhost:3000/user/login', values)
        if(response.data.status == false){
@@ -25,14 +24,12 @@ const Login = () => {
        }
        else{
          const userData = {
-           message: response.data.message,
            accountNumber : response.data.accountNumber,
-           balance : response.data.balance,
-           historys: response.data.history
+           id: response.data._id
           }
           localStorage.setItem('token', response.data.token)
           localStorage.setItem('userData', JSON.stringify(userData))
-          navigate('/dashboard', { state: userData });
+          navigate('/dashboard');
           alert(`logged in successful`)
        }
        setloginin(false)
@@ -48,8 +45,7 @@ const Login = () => {
               .min(8, "Password must be at least 8 characters")
               .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
               .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-              .matches(/[@$!%*?&]/, "Password must contain at least one special character"),
-      
+               .matches(/[@$!%*?&]/, "Password must contain at least one special character"),
     })
   })
 
@@ -84,7 +80,7 @@ const Login = () => {
                 loginin? 'Logging in...' : 'Login'
               }
               </button>
-            <a href="/forgetpassword">forget password?</a>
+            <a href="/forgetpasswordotp">forget password?</a>
           </div>
 
             <div  className="hrContainer">

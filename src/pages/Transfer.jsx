@@ -11,12 +11,10 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom'
 const Transfer = () => {
 
   let navigate = useNavigate()
-  const location = useLocation()
-  const token = localStorage.getItem('token')
-  const stateData = location.state
-  const localData = localStorage.getItem('userData')
-  const parsedData = localData ? JSON.parse(localData) : {}
-  const data = token ? stateData || parsedData : ''
+  let token = localStorage.getItem('token')
+  let localAcountnum = localStorage.getItem('userData')
+  let parsedData = JSON.parse(localAcountnum)
+  let data = parsedData ? parsedData : {}
   const { accountNumber } = data
 
   const [transferResponse, setTransferResponse] = useState(null)
@@ -41,12 +39,28 @@ const Transfer = () => {
             senderAccountNumber,
             receiverAccountNumber,
             amount
-          })
+          },
+          {
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          }
+        )
 
         if (formik.values.accountNum == '') {
-          return alert('input account number')
+          setisSending(false)
+          navigate('/dashboard/transfer')
+          alert('input account number')
+          return
         }
-        // settransferResponse(response.data)
+
+        if (response.data.message === 'session expired') {
+          alert('session expired')
+          navigate('/')
+          return
+        }
+
         if (response.data.status == false) {
           alert(`${response.data.message}`)
           navigate('/dashboard/transfer')
@@ -59,9 +73,9 @@ const Transfer = () => {
           return navigate('/')
         }
         else {
-          const updateData = { ...parsedData, balance: response.data.newBalance, historys: response.data.history }
-          localStorage.setItem('userData', JSON.stringify(updateData))
-          navigate('/dashboard', { state: updateData })
+          console.log(response.data);
+
+          navigate('/dashboard')
           alert(`${response.data.message}`)
         }
       } catch (error) {
@@ -86,11 +100,18 @@ const Transfer = () => {
       else {
         try {
           setLoadingName(true)
-          let res = await axios.get(`http://localhost:3000/user/resolve/${accountNum}`)
-          console.log(res.data);
+          let res = await axios.get(`http://localhost:3000/user/resolve/${accountNum}`,
+            {
+              headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            }
+          )
 
           if (res.data.status == false) {
             setTransferResponse(res.data.message)
+            // setReceiverName('')
           }
           else {
             setReceiverName(res.data.accountName)
@@ -126,7 +147,7 @@ const Transfer = () => {
 
       {loadingName ? (
         <small className="account-name">Checking account...</small>
-      ) : transferResponse === 'user not found' ? (
+      ) : transferResponse === 'User not found' ? (
         <small className="account-name" style={{ color: 'red' }}>{transferResponse}</small>
       ) : receiverName ? <small className="account-name">{receiverName}</small> : ''
       }

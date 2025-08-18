@@ -8,10 +8,10 @@ import BankLogo from '../assets/bankLogo.jpg'
 const Dashboard = () => {
  let navigate = useNavigate()
     const logout =()=>{
-        // let verifytoken =localStorage.getItem('token')
         let confirm = window.confirm('Are you sure you want to logout?')
         if(!confirm){
-            navigate('/Dashboard/home')
+            navigate('/Dashboard/')
+            return
         }else{
             alert('user logged out')
             localStorage.removeItem('token')
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     <NavLink to={'/Dashboard/profile'} className={'nav-item'}>Profile</NavLink>
                     <NavLink to={'/Dashboard/settings'} className={'nav-item'}>Settings</NavLink>
                     <NavLink to={'/Dashboard/transfer'} className={'nav-item'}>Transfer</NavLink>
-                    <NavLink  to={'/'} className="nav-item logout" onClick={()=>logout()}>Logout</NavLink>
+                    <button className=" logout" onClick={()=>logout()}>Logout</button>
                 </nav>
             </aside>
 
