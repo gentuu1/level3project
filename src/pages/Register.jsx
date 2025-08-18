@@ -7,6 +7,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const Register = () => {
 let navigate = useNavigate();
+const [iscreating, setiscreating] = useState(false)
 
   let formik = useFormik({
     initialValues: {
@@ -15,18 +16,22 @@ let navigate = useNavigate();
       password: ''
     },
     onSubmit: async(values) => {
+      try {
+        setiscreating(true)
       let response = await axios.post('http://localhost:3000/user/register', values)
       if(response.data.status == false){
           navigate('/Register')
           alert(`${response.data.message}`);
+          setiscreating(false)
       }
       else{
         navigate('/login')
         alert(`${response.data.message}`);
       }
-
-
-
+      } catch (error) {
+        console.log(error);
+      }
+      setiscreating(false)
     },
     validationSchema: yup.object({
       name: yup.string().required('Fullname is required'),
@@ -86,7 +91,11 @@ let navigate = useNavigate();
             )
           }
 
-          <button type="submit" onClick={formik.handleSubmit} >Create</button>
+          <button type="submit" onClick={formik.handleSubmit} >
+            {
+              iscreating? 'creating..' : 'Create'
+            }
+          </button>
         </div>
 
 
