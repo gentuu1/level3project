@@ -80,7 +80,7 @@ const Login = () => {
                 loginin? 'Logging in...' : 'Login'
               }
               </button>
-            <a href="/forgetpasswordotp">forget password?</a>
+            <Link style={{textDecoration:'none', color:'blue'}} to={'/forgetpasswordotp'}>forget password?</Link>
           </div>
 
             <div  className="hrContainer">
