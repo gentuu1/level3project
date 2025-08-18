@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as yup from "yup";
 import { Formik, useFormik } from 'formik';
 import LogoNav from '../components/LogoNav'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const Register = () => {
 let navigate = useNavigate();
