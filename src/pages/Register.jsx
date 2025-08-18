@@ -54,7 +54,7 @@ let navigate = useNavigate();
       <div className="container">
         <div style={{ color: 'white', textAlign: 'center', lineHeight: '10px' }}>
           <h1>Create Account!</h1>
-          <p>Already have an account? <a href="/Login">Login here</a></p>
+          <p>Already have an account? <Link to={'/login'}>Login here</Link></p>
         </div>
 
 

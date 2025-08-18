@@ -4,7 +4,7 @@ import LogoNav from "../components/LogoNav";
 import { Formik, useFormik } from "formik";
 import axios from "axios";
 import * as yup from 'yup'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import usestate from "usestate";
 const Login = () => {
   const [loginin, setloginin] = useState(false)
@@ -56,7 +56,7 @@ const Login = () => {
        <div className="container">
           <div  style={{color:'white', textAlign:'center', lineHeight:'10px'}}>
              <h1>Welcome Back</h1>
-          <p>Don't have an account yet? <a href="/Register">SignUp</a></p>
+          <p>Don't have an account yet? <Link to={'/register'}>Sign Up</Link></p>
           </div>
 
           <div className="inputcontainerLog">
