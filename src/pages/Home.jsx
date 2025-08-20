@@ -90,7 +90,7 @@ const Home = () => {
                     </p>
                     <small className="account-number">
                         {
-                            isaccountNumber ? `Account No: $${isaccountNumber}` : ''
+                            isaccountNumber ? `Account No: ${isaccountNumber}` : ''
                         }
                     </small>
                 </div>
