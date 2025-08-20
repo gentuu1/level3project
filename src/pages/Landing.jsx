@@ -10,6 +10,7 @@ const Landing = () => {
     <div style={{backgroundColor:'#FFFDF3', height:'100dvh'}}>
       <LogoNav/>
      <section
+     className="landingSection"
         style={{
           display: "flex",
           flexDirection: "column",
@@ -18,7 +19,7 @@ const Landing = () => {
           // textAlign: "center",
         }}
       >
-        <h1 style={{ fontSize: "2.5rem", color: "#000E42" }}>
+        <h1 style={{ fontSize: "2.5rem", color: "#000E42", textAlign:'center' }}>
           Welcome to SQI TRUSTBANK
         </h1>
         <p style={{ fontSize: "1.1rem", maxWidth: "500px",}}>

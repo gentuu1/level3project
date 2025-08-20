@@ -6,25 +6,25 @@ import { Navigate, NavLink, Outlet, useNavigate } from 'react-router-dom'
 import BankLogo from '../assets/bankLogo.jpg'
 
 const Dashboard = () => {
- let navigate = useNavigate()
-    const logout =()=>{
+    let navigate = useNavigate()
+    const logout = () => {
         let confirm = window.confirm('Are you sure you want to logout?')
-        if(!confirm){
+        if (!confirm) {
             navigate('/Dashboard/')
             return
-        }else{
+        } else {
             alert('user logged out')
             localStorage.removeItem('token')
             localStorage.removeItem('userData')
             navigate('/')
-        }   
+        }
     }
 
     return (
         <div className='dashboard-layout'>
-            <aside className='sidebar' style={{ width: '20%' }}>
+            <aside className='sidebar'>
                 <div className='sidebar-div'>
-                    <img src={image} alt="" height={70} />
+                    <img src={image} alt=""/>
                     <h1>SQI TRUSTBANK</h1>
                 </div>
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     <NavLink to={'/Dashboard/profile'} className={'nav-item'}>Profile</NavLink>
                     <NavLink to={'/Dashboard/settings'} className={'nav-item'}>Settings</NavLink>
                     <NavLink to={'/Dashboard/transfer'} className={'nav-item'}>Transfer</NavLink>
-                    <button className=" logout" onClick={()=>logout()}>Logout</button>
+                    <button className=" logout" onClick={() => logout()}>Logout</button>
                 </nav>
             </aside>
 
@@ -45,9 +45,11 @@ const Dashboard = () => {
             <div
                 style={{
                     width: '25%',
-                    overflow:'hidden'
+                    overflow: 'hidden'
                 }}
-            ><img src={BankLogo} height={600} alt="" style={{width:'100%'}}/></div>
+
+                className='sidebarBank'
+            ><img src={BankLogo} height={600} alt="" style={{ width: '100%' }} /></div>
 
         </div>
     )

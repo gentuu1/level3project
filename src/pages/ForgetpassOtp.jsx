@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Formik, useFormik } from 'formik'
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import * as yup from 'yup'
 import LogoNav from '../components/LogoNav'
 
@@ -58,6 +58,8 @@ const ForgetpassOtp = () => {
             isrequesting? 'Requesting' : 'Request'
           }
         </button>
+
+        <Link style={{color:'blue', textAlign:'center', fontSize:'20px'}} to={'/login'}>login</Link>
         </div>
       </div>
     </div>

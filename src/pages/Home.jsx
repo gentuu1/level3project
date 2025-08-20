@@ -97,7 +97,7 @@ const Home = () => {
             </section>
 
             <section className="quick-actions">
-                <h4>Quick Actions</h4>
+                <h3>Quick Actions</h3>
 
                 <div className="actions-container">
                     <Link className="link" to="/Dashboard/Transfer">

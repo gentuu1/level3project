@@ -59,7 +59,7 @@ const [iscreating, setiscreating] = useState(false)
       <div className="container">
         <div style={{ color: 'white', textAlign: 'center', lineHeight: '10px' }}>
           <h1>Create Account!</h1>
-          <p>Already have an account? <Link to={'/login'}>Login here</Link></p>
+          <p>Already have an account? <Link className='llink' to={'/login'}>Login here</Link></p>
         </div>
 
 

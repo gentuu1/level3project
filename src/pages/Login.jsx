@@ -56,7 +56,7 @@ const Login = () => {
        <div className="container">
           <div  style={{color:'white', textAlign:'center', lineHeight:'10px'}}>
              <h1>Welcome Back</h1>
-          <p>Don't have an account yet? <Link to={'/register'}>Sign Up</Link></p>
+          <p>Don't have an account yet? <Link className="llink" to={'/register'}>Sign Up</Link></p>
           </div>
 
           <div className="inputcontainerLog">
@@ -80,7 +80,7 @@ const Login = () => {
                 loginin? 'Logging in...' : 'Login'
               }
               </button>
-            <Link style={{textDecoration:'none', color:'blue'}} to={'/forgetpasswordotp'}>forget password?</Link>
+            <Link className="forgetLink" to={'/forgetpasswordotp'}>forget password?</Link>
           </div>
 
             <div  className="hrContainer">
