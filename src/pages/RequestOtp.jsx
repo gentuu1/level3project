@@ -17,7 +17,7 @@ const RequestOtp = () => {
         onSubmit: async (values) => {
             try {
                 setisrequesting(true)
-                let res = await axios.post('http://localhost:3000/user/requestotp',
+                let res = await axios.post('https://backendproject-rxcq.onrender.com/user/requestotp',
                     values,
                     {
                         headers: {

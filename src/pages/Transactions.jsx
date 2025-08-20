@@ -19,7 +19,7 @@ const Transactions = () => {
     const transactions = async () => {
       try {
         setisloading(true)
-        let res = await axios.get(`http://localhost:3000/user/transaction/${accountNumber}`, {
+        let res = await axios.get(`https://backendproject-rxcq.onrender.com/user/transaction/${accountNumber}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
             'Content-Type': 'application/json'

@@ -18,7 +18,7 @@ const [iscreating, setiscreating] = useState(false)
     onSubmit: async(values) => {
       try {
         setiscreating(true)
-      let response = await axios.post('http://localhost:3000/user/register', values)
+      let response = await axios.post('https://backendproject-rxcq.onrender.com/user/register', values)
       if(response.data.status == false){
           navigate('/Register')
           alert(`${response.data.message}`);

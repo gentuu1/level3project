@@ -15,7 +15,7 @@ const DeleteAccount = () => {
             
             let data = userData? userData : {}
             let {id} = data || {}
-            let res = await axios.delete(`http://localhost:3000/user/delete/${id}`)
+            let res = await axios.delete(`https://backendproject-rxcq.onrender.com/user/delete/${id}`)
             console.log(res.data);
             
             if (res.data.status == false){

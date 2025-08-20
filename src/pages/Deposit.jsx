@@ -20,7 +20,7 @@ const Deposit = () => {
             amount: ''
         },
         onSubmit: async (values) => {
-            let res = await axios.post('http://localhost:3000/user/deposit', values,
+            let res = await axios.post('https://backendproject-rxcq.onrender.com/user/deposit', values,
                 {
                     headers: {
                         "Authorization": `Bearer ${token}`,

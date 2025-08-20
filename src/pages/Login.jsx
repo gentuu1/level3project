@@ -17,7 +17,7 @@ const Login = () => {
     },
      onSubmit:async(values)=>{
       setloginin(true)
-       let response = await axios.post('http://localhost:3000/user/login', values)
+       let response = await axios.post('https://backendproject-rxcq.onrender.com/user/login', values)
        if(response.data.status == false){
          navigate('/login')
          alert(`${response.data.message}`)

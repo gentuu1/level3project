@@ -24,7 +24,7 @@ const Profile = () => {
   useEffect(() => {
     const profileDetails = async () => {
       try {
-        let res = await axios.get(`http://localhost:3000/user/profile/${accountNumber}`,
+        let res = await axios.get(`https://backendproject-rxcq.onrender.com/user/profile/${accountNumber}`,
            {headers:{
             "Authorization":`Bearer ${token}`,
             'Content-Type':'application/json'

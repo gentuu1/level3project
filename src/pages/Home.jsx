@@ -20,7 +20,7 @@ const Home = () => {
     useEffect(() => {
         const homeDetails = async () => {
             try {
-                let res = await axios.post('http://localhost:3000/user/home', { accountNumber },
+                let res = await axios.post('https://backendproject-rxcq.onrender.com/user/home', { accountNumber },
                     {
                         headers: {
                             "Authorization": `Bearer ${token}`,

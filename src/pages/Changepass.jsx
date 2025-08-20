@@ -19,7 +19,7 @@ const Changepass = () => {
         onSubmit: async (values) => {
             try {
                 setisloading(true)
-                let res = await axios.post('http://localhost:3000/user/changepassword',
+                let res = await axios.post('https://backendproject-rxcq.onrender.com/user/changepassword',
                     values,
                     {
                         headers: {

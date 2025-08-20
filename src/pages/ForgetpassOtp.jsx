@@ -17,7 +17,7 @@ const ForgetpassOtp = () => {
     onSubmit: async (values) => {
       try {
         setisrequesting(true)
-        let res = await axios.post('http://localhost:3000/user/forgetpasswordotp', values)
+        let res = await axios.post('https://backendproject-rxcq.onrender.com/user/forgetpasswordotp', values)
         console.log(res.data);
         
         if (res.data.status == false) {

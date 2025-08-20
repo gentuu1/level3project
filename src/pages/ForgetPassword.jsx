@@ -18,7 +18,7 @@ const ForgetPassword = () => {
         onSubmit: async (values) => {
             try {
                 setisUpdating(true)
-            let response = await axios.post('http://localhost:3000/user/forgetpassword', values)
+            let response = await axios.post('https://backendproject-rxcq.onrender.com/user/forgetpassword', values)
             if (response.data.status == false) {
                 navigate('/forgetpassword')
                 alert(`${response.data.message}`)

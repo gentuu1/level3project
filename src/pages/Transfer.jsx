@@ -34,7 +34,7 @@ const Transfer = () => {
       try {
         setisSending(true)
         let response = await axios.post(
-          'http://localhost:3000/user/transfer',
+          'https://backendproject-rxcq.onrender.com/user/transfer',
           {
             senderAccountNumber,
             receiverAccountNumber,
@@ -100,7 +100,7 @@ const Transfer = () => {
       else {
         try {
           setLoadingName(true)
-          let res = await axios.get(`http://localhost:3000/user/resolve/${accountNum}`,
+          let res = await axios.get(`https://backendproject-rxcq.onrender.com/user/resolve/${accountNum}`,
             {
               headers: {
                 "Authorization": `Bearer ${token}`,
