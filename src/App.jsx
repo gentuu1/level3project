@@ -26,10 +26,10 @@ function App() {
    
 
         <Route path="/" element={<Landing />} />
-        <Route path="register" element={<Register />} />
-        <Route path="login" element={<Login />} />
-        <Route path="forgetpassword" element={<ForgetPassword/>}/>
-        <Route path="forgetpasswordotp" element={<ForgetpassOtp/>}/>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/forgetpassword" element={<ForgetPassword/>}/>
+        <Route path="/forgetpasswordotp" element={<ForgetpassOtp/>}/>
 
 
         <Route path="dashboard" element={<Dashboard/>}>
